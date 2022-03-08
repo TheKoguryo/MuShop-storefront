@@ -106,13 +106,13 @@ gulp.task('extras', gulp.series('oda:copy'));
 // Images
 
 // copy images into build
-gulp.task('image:copy', function() {
+gulp.task('image:copy', async function() {
   return gulp.src('src/images/**/*')
     .pipe(gulp.dest(`${opt.buildDir}/images`))
 });
 
 // optimize images 
-gulp.task('image:optimize', function(done) {
+gulp.task('image:optimize', async function(done) {
   return gulp.src(`${opt.buildDir}/images/**/*`)
     .pipe(cache(imagemin([
       pngquant({quality: [0.3, 0.5]}),
